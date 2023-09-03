@@ -4,7 +4,7 @@ import Config
 config :matsnet, Matsnet.Repo,
   username: "postgres",
   password: "postgres",
-  hostname: "10.151.8.91",
+  hostname: "localhost",
   database: "matsnet_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
