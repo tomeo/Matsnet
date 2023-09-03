@@ -68,6 +68,11 @@ defmodule MatsnetWeb.Router do
       on_mount: [{MatsnetWeb.UserAuth, :ensure_authenticated}] do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
+      live "/roles", RoleLive.Index, :index
+      live "/roles/new", RoleLive.Index, :new
+      live "/roles/:id/edit", RoleLive.Index, :edit
+      live "/roles/:id", RoleLive.Show, :show
+      live "/roles/:id/show/edit", RoleLive.Show, :edit
     end
   end
 
