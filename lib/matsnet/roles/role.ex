@@ -4,7 +4,7 @@ defmodule Matsnet.Roles.Role do
 
   schema "roles" do
     field :name, :string
-    has_many :user, Matsnet.Accounts.User
+    has_many :users, Matsnet.Accounts.User
 
     timestamps()
   end
