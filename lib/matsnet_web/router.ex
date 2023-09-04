@@ -73,6 +73,11 @@ defmodule MatsnetWeb.Router do
       live "/roles/:id/edit", RoleLive.Index, :edit
       live "/roles/:id", RoleLive.Show, :show
       live "/roles/:id/show/edit", RoleLive.Show, :edit
+      live "/teams", TeamLive.Index, :index
+      live "/teams/new", TeamLive.Index, :new
+      live "/teams/:id/edit", TeamLive.Index, :edit
+      live "/teams/:id", TeamLive.Show, :show
+      live "/teams/:id/show/edit", TeamLive.Show, :edit
     end
   end
 

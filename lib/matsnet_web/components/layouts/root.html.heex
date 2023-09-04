@@ -25,6 +25,9 @@
           <%= if @current_user.last_name do %>
             <%= @current_user.last_name %>
           <% end %>
+          <%= if @current_user.team do %>
+            <%= @current_user.team.name %>
+          <% end %>
         </li>
         <li>
           <.link

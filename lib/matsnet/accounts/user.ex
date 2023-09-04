@@ -10,6 +10,7 @@ defmodule Matsnet.Accounts.User do
     belongs_to :role, Matsnet.Roles.Role
     field :first_name, :string
     field :last_name, :string
+    belongs_to :team, Matsnet.Teams.Team
 
     timestamps()
   end
@@ -39,7 +40,7 @@ defmodule Matsnet.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password, :role_id, :first_name, :last_name])
+    |> cast(attrs, [:email, :password, :role_id, :first_name, :last_name, :team_id])
     |> validate_email(opts)
     |> validate_password(opts)
   end
