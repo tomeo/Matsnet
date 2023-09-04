@@ -16,6 +16,9 @@
       <%= if @current_user do %>
         <li class="text-[0.8125rem] leading-6 text-zinc-900">
           <%= @current_user.email %>
+          <%= if @current_user.role do %>
+            <%= @current_user.role.name %>
+          <% end %>
         </li>
         <li>
           <.link
