@@ -15,5 +15,5 @@ Matsnet.Roles.create_role(%{name: "Developer"})
 Matsnet.Roles.create_role(%{name: "Senior Developer"})
 Matsnet.Roles.create_role(%{name: "Solution Architect"})
 
-{:ok, user1} = Matsnet.Accounts.register_user(%{email: "user@example.com", password: "password12345", role_id: 1})
-{:ok, user2} = Matsnet.Accounts.register_user(%{email: "user2@example.com", password: "password12345", role_id: 2})
+{:ok, user1} = Matsnet.Accounts.register_user(%{email: "user@example.com", password: "password12345", role_id: 1, first_name: "Alice", last_name: "Smith"})
+{:ok, user2} = Matsnet.Accounts.register_user(%{email: "user2@example.com", password: "password12345", role_id: 2, first_name: "Bob", last_name: "Jones"})

@@ -8,6 +8,8 @@ defmodule Matsnet.Accounts.User do
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
     belongs_to :role, Matsnet.Roles.Role
+    field :first_name, :string
+    field :last_name, :string
 
     timestamps()
   end
@@ -37,7 +39,7 @@ defmodule Matsnet.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password, :role_id])
+    |> cast(attrs, [:email, :password, :role_id, :first_name, :last_name])
     |> validate_email(opts)
     |> validate_password(opts)
   end
