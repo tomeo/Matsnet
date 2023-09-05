@@ -15,19 +15,7 @@
     <ul class="relative z-10 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end bg-gradient-to-b from-gray-700 via-gray-900 to-black text-white py-2">
       <%= if @current_user do %>
         <li class="text-[0.8125rem] leading-6">
-          <%= @current_user.email %>
-          <%= if @current_user.role do %>
-            <%= @current_user.role.name %>
-          <% end %>
-          <%= if @current_user.first_name do %>
-            <%= @current_user.first_name %>
-          <% end %>
-          <%= if @current_user.last_name do %>
-            <%= @current_user.last_name %>
-          <% end %>
-          <%= if @current_user.team do %>
-            <%= @current_user.team.name %>
-          <% end %>
+          
         </li>
         <li>
           <.link
@@ -65,11 +53,36 @@
         </li>
       <% end %>
     </ul>
-    <div class="p-4 flex items-center gap-4 bg-red-600 bg-gradient-to-b from-red-400 to-red-600 text-white">
+    <div class="p-4 flex justify-between bg-red-600 bg-gradient-to-b from-red-400 to-red-600 text-white">
       <a href="/" class="flex flex-col gap-1">
         <span class="text-4xl font-semibold">🍺 Matsnet</span>
         <span class="text-sm text-center tracking-tighter">Always at least two</span>
       </a>
+      <%= if @current_user do %>
+        <div class="justify-end flex flex-col">
+          <div class="bg-white text-black text-sm rounded-xl p-2 w-30 text-center">
+            <div class="text-sm font-semibold">
+              <%= if @current_user.first_name do %>
+                <%= @current_user.first_name %> <%= @current_user.last_name %>
+              <% else %>
+                <%= @current_user.email %>
+              <% end %>
+            </div>
+            <%= if @current_user.role do %>
+              <div class="text-xs">
+                <%= @current_user.role.name %>
+              </div>
+            <% end %>
+            <div>
+            <%= if @current_user.team do %>
+              <div class="text-xs">
+                <%= @current_user.team.name %>
+              </div>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
     <%= @inner_content %>
   </body>
