@@ -59,6 +59,26 @@
         <span class="text-sm text-center tracking-tighter">Always at least two</span>
       </a>
       <%= if @current_user do %>
+        <div class="m-auto bg-white text-black p-4 rounded">
+          <ul class="flex gap-6">
+            <li>
+              <.link
+                href={~p"/roles"}
+                class="font-semibold"
+              >
+                Roles
+              </.link>
+            </li>
+            <li>
+              <.link
+                href={~p"/teams"}
+                class="font-semibold"
+              >
+                Teams
+              </.link>
+            </li>
+          </ul>
+        </div>
         <div class="justify-end flex flex-col">
           <div class="bg-white text-black text-sm rounded-xl p-2 w-30 text-center">
             <div class="text-sm font-semibold">
