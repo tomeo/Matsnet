@@ -25,5 +25,10 @@ Matsnet.Projects.create_project(%{title: "Project 2"})
 Matsnet.Projects.create_project(%{title: "Project 3"})
 Matsnet.Projects.create_project(%{title: "Project 4"})
 
+Matsnet.Tasks.create_task(%{title: "Task 1"})
+Matsnet.Tasks.create_task(%{title: "Task 2"})
+Matsnet.Tasks.create_task(%{title: "Task 3"})
+Matsnet.Tasks.create_task(%{title: "Task 4"})
+
 {:ok, user1} = Matsnet.Accounts.register_user(%{email: "user@example.com", password: "password12345", role_id: 1, first_name: "Alice", last_name: "Smith", team_id: 1})
 {:ok, user2} = Matsnet.Accounts.register_user(%{email: "user2@example.com", password: "password12345", role_id: 2, first_name: "Bob", last_name: "Jones", team_id: 2})
