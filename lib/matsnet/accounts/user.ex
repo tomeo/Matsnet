@@ -11,6 +11,8 @@ defmodule Matsnet.Accounts.User do
     field :first_name, :string
     field :last_name, :string
     belongs_to :team, Matsnet.Teams.Team
+    many_to_many :tasks, Matsnet.Tasks.Task,
+      join_through: Matsnet.UserTasks
 
     timestamps()
   end

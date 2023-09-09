@@ -5,6 +5,8 @@ defmodule Matsnet.Tasks.Task do
   schema "tasks" do
     field :description, :string
     field :title, :string
+    many_to_many :users, Matsnet.Accounts.User,
+      join_through: Matsnet.UserTasks
 
     timestamps()
   end
