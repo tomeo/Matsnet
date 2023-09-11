@@ -5,6 +5,7 @@ defmodule Matsnet.Projects.Project do
   schema "projects" do
     field :description, :string
     field :title, :string
+    has_many :tasks, Matsnet.Tasks.Task
 
     timestamps()
   end

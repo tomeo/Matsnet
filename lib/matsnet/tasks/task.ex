@@ -7,6 +7,7 @@ defmodule Matsnet.Tasks.Task do
     field :title, :string
     many_to_many :users, Matsnet.Accounts.User,
       join_through: Matsnet.UserTasks
+    belongs_to :project, Matsnet.Projects.Project
 
     timestamps()
   end
@@ -14,7 +15,7 @@ defmodule Matsnet.Tasks.Task do
   @doc false
   def changeset(task, attrs) do
     task
-    |> cast(attrs, [:title, :description])
+    |> cast(attrs, [:title, :description, :project_id])
     |> validate_required([:title])
   end
 end
