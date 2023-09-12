@@ -5,22 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
     <.live_title suffix=" · Always at least two">
-      <%= assigns[:page_title] || "🍺 Matsnet" %>
+      <%= assigns[:page_title] || "🐱 matsnet" %>
     </.live_title>
+    <link phx-track-static rel="stylesheet" href={static_path(@conn, "/assets/vendor/fonts/InterWeb/inter.css")}/>
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
   </head>
   <body class="bg-white antialiased">
-    <ul class="relative z-10 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end bg-gradient-to-b from-gray-700 via-gray-900 to-black text-white py-2">
+  <div class="flex justify-between px-8 py-4 items-center text-slate-700 tracking-tighter">
+    <div class="flex items-center gap-10">
+      <a href="/" class="flex text-4xl" title="matsnet">
+        <span>🐱</span>
+        <span class="font-medium">matsnet</span>
+      </a>
       <%= if @current_user do %>
-        <li class="text-[0.8125rem] leading-6">
-          
-        </li>
+      <div>
+        <ul class="flex gap-6 tracking-tighter">
+          <li>
+            <.link
+              href={~p"/tasks"}
+            >
+              Tasks
+            </.link>
+          </li>
+          <li>
+            <.link
+              href={~p"/projects"}
+            >
+              Projects
+            </.link>
+          </li>
+          <li>
+            <.link
+              href={~p"/roles"}
+            >
+              Roles
+            </.link>
+          </li>
+          <li>
+            <.link
+              href={~p"/teams"}
+            >
+              Teams
+            </.link>
+          </li>
+        </ul>
+      </div>
+      <% end %>
+    </div>
+  <%= if @current_user do %>
+    <div>
+      <ul class="flex items-center gap-4 justify-end text-black tracking-tighter">
         <li>
           <.link
             href={~p"/users/settings"}
-            class="text-[0.8125rem] leading-6 font-semibold"
           >
             Settings
           </.link>
@@ -29,16 +68,18 @@
           <.link
             href={~p"/users/log_out"}
             method="delete"
-            class="text-[0.8125rem] leading-6 font-semibold"
           >
             Log out
           </.link>
         </li>
-      <% else %>
+      </ul>
+    </div>
+  <% else %>
+    <div>
+      <ul class="flex gap-6 tracking-tighter">
         <li>
           <.link
             href={~p"/users/register"}
-            class="text-[0.8125rem] leading-6 font-semibold"
           >
             Register
           </.link>
@@ -46,80 +87,48 @@
         <li>
           <.link
             href={~p"/users/log_in"}
-            class="text-[0.8125rem] leading-6 font-semibold"
           >
             Log in
           </.link>
         </li>
-      <% end %>
-    </ul>
-    <div class="p-4 flex justify-between bg-red-600 bg-gradient-to-b from-red-400 to-red-600 text-white">
-      <a href="/" class="flex flex-col gap-1">
-        <span class="text-4xl font-semibold">🍺 Matsnet</span>
-        <span class="text-sm text-center tracking-tighter">Always at least two</span>
-      </a>
-      <%= if @current_user do %>
-        <div class="m-auto bg-white text-black p-4 rounded">
-          <ul class="flex gap-6">
-            <li>
-              <.link
-                href={~p"/tasks"}
-                class="font-semibold"
-              >
-                Tasks
-              </.link>
-            </li>
-            <li>
-              <.link
-                href={~p"/projects"}
-                class="font-semibold"
-              >
-                Projects
-              </.link>
-            </li>
-            <li>
-              <.link
-                href={~p"/roles"}
-                class="font-semibold"
-              >
-                Roles
-              </.link>
-            </li>
-            <li>
-              <.link
-                href={~p"/teams"}
-                class="font-semibold"
-              >
-                Teams
-              </.link>
-            </li>
-          </ul>
-        </div>
-        <div class="justify-end flex flex-col">
-          <div class="bg-white text-black text-sm rounded-xl p-2 w-30 text-center">
-            <div class="text-sm font-semibold">
-              <%= if @current_user.first_name do %>
-                <%= @current_user.first_name %> <%= @current_user.last_name %>
-              <% else %>
-                <%= @current_user.email %>
-              <% end %>
-            </div>
-            <%= if @current_user.role do %>
-              <div class="text-xs">
-                <%= @current_user.role.name %>
-              </div>
-            <% end %>
-            <div>
-            <%= if @current_user.team do %>
-              <div class="text-xs">
-                <%= @current_user.team.name %>
-              </div>
-            <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      </ul>
     </div>
-    <%= @inner_content %>
+    <% end %>
+  </div>
+  <div class="mt-20 mb-36 text-slate-700 text-center flex flex-col gap-4 max-w-2xl mx-auto tracking-tighter">
+    <h1 class="text-6xl font-bold">A platform built for Mats way of working</h1>
+    <h2 class="text-xl">Boost your teams alignment, efficiency, and productivity simply by aligning with the ways of Mats</h2>
+  </div>
+  <div class="bg-slate-100 p-16 flex gap-10 justify-around text-slate-600 tracking-tighter">
+    <div class="max-w-xl flex flex-col gap-4">
+      <div class="flex flex-col gap-2">
+        <h2 class="text-3xl font-semibold text-black ">What does matsnet do?</h2>
+        <p class="text-justify text-slate-600">Matsnet streamlines your work for maximum productivity. Centralize all your work, processes, tools, and files into one system. Connect teams, bridge silos, and maintain one source of truth across your organization.</p>
+      </div>
+      <div class="flex flex-col gap-2">
+        <h3 class="text-3xl font-semibold text-black">What is matssplaining?</h3>
+        <p><strong>Matssplaining</strong> is the explanation of something by Mats, typically to someone who is not Mats, in a manner regarded as very informative, but with a pessimistic world view.</p>
+      </div>
+    </div>
+    <div class="flex flex-col gap-6 max-w-xl">
+      <div class="flex flex-col gap-3">
+        <h3 class="text-xl">✅ Everything in one place</h3>
+        <p class="text-slate-600">All the tools you need, in one place, like a well organised garage - like Mats garage.</p>
+      </div>
+      <div class="flex flex-col gap-3">
+        <h3 class="text-xl">✅ Stay in control</h3>
+        <p class="text-slate-600">Mats does not micromanage.</p>
+      </div>
+      <div class="flex flex-col gap-3">
+        <h3 class="text-xl">✅ Malmös best working environment</h3>
+        <p class="text-slate-600">It may also be okay in Lund and other places. No guarantees.</p>
+      </div>
+    </div>
+  </div>
+  <div class="mt-20 mb-36 text-slate-700 text-center flex flex-col gap-4 max-w-2xl mx-auto tracking-tighter">
+    <h3 class="text-4xl font-bold">Are you looking for carpets?</h3>
+    <p class="text-xl">Matsnet does not sell carpets. If you want carpets, try <a href="https://www.carpetvista.se/" title="Carpetvista" class="underline font-semibold">Carpetvista</a></p>
+  </div>
+  <%= @inner_content %>
   </body>
 </html>
