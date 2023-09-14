@@ -233,7 +233,6 @@ defmodule Matsnet.Accounts do
     {:ok, query} = UserToken.verify_session_token_query(token)
     user = Repo.one(query)
     |> Repo.preload([:role, :team])
-    IO.inspect user
     user
   end
 
