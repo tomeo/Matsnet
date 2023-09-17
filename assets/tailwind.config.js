@@ -20,6 +20,9 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      gridTemplateColumns: {
+        'letters': '15% auto',
+      },
     },
   },
   plugins: [
